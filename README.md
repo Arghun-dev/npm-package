@@ -39,6 +39,8 @@ as you can see here, we have `rollup-plugin-peer-deps-external` => this just ens
 
 so `$. npm i -D @babel/preset-react`
 
+`$. npm i -D rollup-plugin-postcss`
+
 now to config rollup create a new file called `rollup.config.js` in the root of the project.
 
 rollup.config.js
@@ -47,6 +49,7 @@ rollup.config.js
 import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import external from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
 
 export default [
   {
@@ -63,6 +66,10 @@ export default [
       }
     ],
     plugins: [
+      postcss({
+        plugins: [],
+        minimize: true
+      }),
       babel({
         exclude: 'node_modules/**',
         presets: ['@babel/preset-react']
@@ -73,3 +80,17 @@ export default [
   }
 ]
 ```
+
+
+in order to run the `rollup` I actually need to add a command to run the rollup. I need to add a script inside package.json
+
+package.json
+```js
+"scripts": {
+  "build-lib": "rollup -c"
+}
+```
+
+then run
+
+`$. npm run build-lib`
