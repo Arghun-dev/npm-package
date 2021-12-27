@@ -14,3 +14,7 @@ And I need a way to see the component as I'm developing, as I'm writing the code
 To do that first you have to install `storybook`.
 
 `$. npx sb init`
+
+If you read about `storybook`, it says that:
+
+**Storybook is an open source tool for developing UI components in isolation for React, Vue, Angular, and more. It makes building stunning UIs organized and efficient.**
