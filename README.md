@@ -41,6 +41,8 @@ so `$. npm i -D @babel/preset-react`
 
 `$. npm i -D rollup-plugin-postcss`
 
+`$. npm i -D rollup-plugin-terser`
+
 now to config rollup create a new file called `rollup.config.js` in the root of the project.
 
 rollup.config.js
@@ -50,6 +52,7 @@ import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
+import { terser } from 'rollup-plugin-terser';
 
 export default [
   {
@@ -75,7 +78,8 @@ export default [
         presets: ['@babel/preset-react']
       }),
       external(),
-      resolve()
+      resolve(),
+      terser()
     ]
   }
 ]
@@ -94,3 +98,11 @@ package.json
 then run
 
 `$. npm run build-lib`
+
+Now, we have library built, it's now in dist folder, we're able to develop using storybook and build using rollup. the only thing left is to publish this to the npm registery, now in order to do that, you have to have an account with the npm registery, once you have an account, you'll be able to publish your library, but make sure that your library has a unique name, so first do a search and make sure that the package you want to install does not already exist. and you can change your package name inside `package.json` file and in the top of the file you can change the `name` property.
+
+and make sure that the `"main": "dist/index.js"` and `"module": "dist/index.es.js"`
+
+and finally run this command `$. npm publish`
+
+the go to your profile in `npm` and inside the packages section, you can find the package you have published.
