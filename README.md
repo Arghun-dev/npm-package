@@ -18,3 +18,9 @@ To do that first you have to install `storybook`.
 If you read about `storybook`, it says that:
 
 **Storybook is an open source tool for developing UI components in isolation for React, Vue, Angular, and more. It makes building stunning UIs organized and efficient.**
+
+If you run the command `$. npx sb init`
+
+Since, we've set up our project structure and have react and react-dom, listed as dev dependencies, when I run this command, it should detect that we're inside of a react project, and it should all work automatically, so I'm going to go to my terminal or my command line interface and I'm going to paste `$. npx sb init`.
+
+and to run the storybook you should write => `$. npm run storybook`
