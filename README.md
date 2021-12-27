@@ -34,3 +34,42 @@ Now the question is how can I build this to a dist folder, that I can then publi
 **rollup: ** `Rollup is a moduule bundler for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application`
 
 to install rollup: `$. npm i -D rollup rollup-plugin-babel @rollup/plugin-node-resolve rollup-plugin-peer-deps-external`
+
+as you can see here, we have `rollup-plugin-peer-deps-external` => this just ensures that we exclude any peer dependencies from our bundle, we have react and react-dom as peer dependencies we want to make sure that we do not add the react and react-dom source code to our bundle, so that babel plugin that I was talking about is `babel-preset-react`.
+
+so `$. npm i -D @babel/preset-react`
+
+now to config rollup create a new file called `rollup.config.js` in the root of the project.
+
+rollup.config.js
+
+```js
+import babel from 'rollup-plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import external from 'rollup-plugin-peer-deps-external';
+
+export default [
+  {
+    input: './src/index.js',
+    output: [
+      {
+        file: 'dist/index.js',
+        format: 'cjs'
+      },
+      {
+        file: 'dist/index.es.js',
+        format: 'es',
+        exports: 'named'
+      }
+    ],
+    plugins: [
+      babel({
+        exclude: 'node_modules/**',
+        presets: ['@babel/preset-react']
+      }),
+      external(),
+      resolve()
+    ]
+  }
+]
+```
