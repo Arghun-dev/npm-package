@@ -24,3 +24,13 @@ If you run the command `$. npx sb init`
 Since, we've set up our project structure and have react and react-dom, listed as dev dependencies, when I run this command, it should detect that we're inside of a react project, and it should all work automatically, so I'm going to go to my terminal or my command line interface and I'm going to paste `$. npx sb init`.
 
 and to run the storybook you should write => `$. npm run storybook`
+
+**Tip: in a normal react application, the `index.js` file typically ends up being the file that compiles the entire react application and then injects it into your `index.html`, however, when you're building a react component library, there is no `index.html` file, and so you're not going to be injecting any type of application into any html files, so the job of `index.js` file inside of a react component library is very different that in a react application, for our case here what it's going to do is export all of the components that I want any application that may be use this library to be able to import, now in my case for the library that I'm building, I only want them to be able to import one component and that's the Requirement component** 
+
+and after you made all of these, and you can see you files stories inside storybook.
+
+Now the question is how can I build this to a dist folder, that I can then publish to `npm` => use `rollup`
+
+**rollup: ** `Rollup is a moduule bundler for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application`
+
+to install rollup: `$. npm i -D rollup rollup-plugin-babel @rollup/plugin-node-resolve rollup-plugin-peer-deps-external`
