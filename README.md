@@ -9,6 +9,8 @@ imagine you wanna create a package through a react component, in this case, I in
 }
 ```
 
+1. `$. npm init`
+
 And I need a way to see the component as I'm developing, as I'm writing the code, I always wanna make sure that I see what it is I'm building, as I'm building it, so I can test it out and make sure that it's working, one way to do that is to create a new react application that simply installs this locally on my machine, so you have a react application, that you create with something like `create-react-app` and then you install this library (the libary you are building) locally on the machine, however I would have to constantly rebuild the app every single time I wanted an update and then I'd have to reinstall on the application that's ingesting this component library and it can be extremely tedious to do that, and I don't wanna to do that. Instead I want to use a tool that makes it as easy as possible for me to develop a component library, and for that I'm going to use `storybook`.
 
 To do that first you have to install `storybook`.
